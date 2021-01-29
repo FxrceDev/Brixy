@@ -2,6 +2,7 @@ local GamePath = brixy.ConnectionOrigin:GetGamePathAsync()
 local AuthenticatedUser = brixy.ConnectionOrigin:GetPlrTokenAsync()
 local Server = brixy.ConnectionOrigin:GetDesiredServerIdAsync()
 local Request = brixy.ConnectionOrigin()
+local root
 
 if AuthenticatedUser.Valid == false then
 
