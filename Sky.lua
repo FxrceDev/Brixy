@@ -15,3 +15,16 @@ Players.PlayerRemoving:Connect(function()
     GameSky:Destroy()
 
 end
+
+game:BindToClose(function()
+
+    GameAtmosphere:Destroy()
+    GameSky:Destroy()
+
+    repeat function() until
+
+        GameAtmosphere.Exists == false && GameSky.Exists == false
+
+    end
+
+end
