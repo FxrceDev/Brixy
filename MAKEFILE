@@ -1,3 +1,45 @@
 local objects = table.new(<THISDIRECTORY>\\Brixy:GetChildren())
+local flags = brixy.System:Flags()
 
 objects:Build(pack, exe, asar, 60, ef, zr)
+
+if flags contains "lnx" then
+
+	objects:Build(pack, appimg, asar, 60, ef, zr)
+
+elseif flags contains "mac" then
+
+	objects:Build(pack, dmg, asar, 60, ef, zr)
+
+elseif flags contains "win" then
+
+	objects:Build(pack, dmg, asar, 60, ef, zr)
+
+end
+
+IDIR =../include
+CC=gcc
+CFLAGS=-I$(IDIR)
+
+ODIR=obj
+LDIR =../lib
+
+LIBS=-lm
+
+_DEPS = hellomake.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+_OBJ = hellomake.o hellofunc.o 
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+
+$(ODIR)/%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+hellomake: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+.PHONY: clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
