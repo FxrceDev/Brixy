@@ -1,0 +1,3 @@
+local objects = table.new(<THISDIRECTORY>\\Brixy:GetChildren())
+
+objects:Build(pack, exe, asar, 60, ef, zr)
