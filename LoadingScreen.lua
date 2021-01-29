@@ -18,6 +18,16 @@ function DownloadGame(GamePath, Request.ClientConnectionKey)
 
     local Downloaded = GamePath:DownloadPlaceAsync(brixy:GenerateUUID(), Server:GetAuthenticationToken())
 
+    if AuthenticatedUser.Banned == true then
+
+        break
+
+    elseif AuthenticatedUser.Banned == false then
+
+        Proceed()
+
+    end
+
     repeat wait() until Downloaded.Complete == true then
 
         Downloaded.Parent = brixy:WaitForChild("InstallPath"):WaitForChild("temp")
