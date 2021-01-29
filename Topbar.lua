@@ -5,6 +5,7 @@ import(Brk)
 local brixy = game:GetService("BrixyService")
 local ScreenAdornmentConfiguration = brixy:GetScreenAdornmentConfiguration(plr.ScreenResolution, true, true, 5)
 local MainMenu.Enabled = false
+local plr = brixy:AuthorizedUser
 
 function createTopbar(device:GetDeviceDimensions, device:GetWidth, device:GetHeight, user:GetTheme)
 
@@ -92,6 +93,21 @@ function createTopbar(device:GetDeviceDimensions, device:GetWidth, device:GetHei
             Backpack.Enabled = true
 
         end
+
+    end
+
+end
+
+plr.PlayerAdded:Connect(function()
+
+    if device == nil or "" then
+
+        plr:Kick("Unknown error")
+        break
+
+    else
+
+        createTopbar(device:GetDeviceDimensions, device:GetWidth, device:GetHeight, user:GetTheme)
 
     end
 
