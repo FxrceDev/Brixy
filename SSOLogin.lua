@@ -101,6 +101,54 @@ function CreateSSOFile(Token, SecurityKey)
 
 end
 
+function SetUserData(File)
+
+    local SSOExtractor = brixy:GetService("SSOExtractor")
+    local SSOExtracted = SSOExtractor:UnzipComponents(File)
+    SSOExtracted.Parent = brixy:GetGamePathAsync():WaitForChild("temp")
+    SSOExtracted.Name = brixy:GenerateUUID()
+    SSOExtracted.RemainEncrypted = true
+    SSOExtracted.TimeBomb = 5
+
+    function UpdateUser(SSOExtracted)
+
+        local usr = brixy:GetAuthorizedUser(File)
+        usr.UserId = SSOExtracted:WaitForChild("UserId")
+        usr.UserUbiKey = SSOExtracted:WaitForChild("UbiKey")
+        usr.AuthenticationCode = SSOExtracted:WaitForChild("Authkey")
+        usr.Username = brixy.GetUsernameFromUserIdAsync(SSOExtracted:WaitForChild("UserId"))
+        usr.Avatar = brixy.GetAvatarFromUserIdAsync(SSOExtracted:WaitForChild("UserId"))
+        usr.MembershipType = brixy.GetMembershipFromUserIdAsync(SSOExtracted:WaitForChild("UserId"))
+        usr.MasterKey = brixy:GenerateUUID()
+
+    end
+
+    function SSOLogout(SSOExtracted, File)
+
+        if File.SignatureExpiry == os.time then
+
+            File:Destroy()
+            SSOExtracted:Destroy()
+            File_Back:Destroy()
+
+        elseif File.SignatureExpiry /= os.time then
+
+            break
+
+        end
+
+    end
+
+    while true do
+
+        wait(600)
+        SSOLogout(SSOExtracted, File)
+        SetUserData(File)
+
+    end
+
+end
+
 if SSO.Valid == true then
 
     CreateSSOFile(Token, SecurityKey)
