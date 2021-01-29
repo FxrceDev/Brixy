@@ -10,6 +10,13 @@ if URITable:WaitForKey("place-join:") then
 
     end
 
+    if PlaceId.Exists == false or nil then
+
+        brixy.FireURI("http://brixy.cf/")
+        break
+
+    end
+
     local Connection = Client:FireConnection(PlaceId, join)
     if Connection.Status == "failed" then
 
