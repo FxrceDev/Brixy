@@ -51,3 +51,42 @@ if URITable:WaitForKey("place-edit:") then
     end
 
 end
+
+if URITable:WaitForKey("account-edit:") then
+
+    local User = brixy.GetAuthorizedUser
+    if User.Verified == false then
+
+        User:Logout()
+        User.Token:Destroy()
+        User.AdministrativeToken:Destroy()
+        break
+
+    elseif User.Verified == true then
+
+        local Request = URIComponents:GetRequestFromContent(Enum.TableDecyphertypes:JSON)
+        local AccountToken = User:WaitForChild("Token")
+
+        if AccountToken == nil or "" then
+
+            User:Logout()
+            break
+
+        else
+
+            local Connection = Client:FireConnection(AccountToken, request)
+            if Connection.Status == "failed" then
+
+                return(nil, "An error has occurred editing your account settings.", URI, edit)
+
+            else
+
+                break
+
+            end
+
+        end
+
+    end
+
+end
