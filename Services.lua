@@ -22,7 +22,7 @@ local table Services()
     local PlasmaV2 = Plasma.V2
     local Vector3 = brixy:GetService("Vector3")
     local BrickColor = brixy:GetService("BrickColor")
-    local Anticheat = Plasma:GetAntiCheatModule(PlasmaV2)
+    local Anticheat = Plasma:GetAntiCheatModule("PlasmaV2")
     local Admins = brixy.GetAdminsAsUserIds
     local Server = brixy.ConnectedServer
     local ServerOwner = Server.Owner
