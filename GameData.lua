@@ -13,6 +13,33 @@ Players.PlayerAdded:Connect(function(plr)
     GameData.Name = GameData.RequiredSynk.Name
     GameData.Value = GameData:GetAsync(plr.UserId, GameData.RequiredSynk.Value)
 
+    GameData.Changed:Connect(function()
+
+        local Save = GameDataStore:SetAsync(plr.UserId, GameData.RequiredSynk.Value)
+
+        if Save.Complete == false then
+
+            while true do
+
+                wait(5)
+                Save = GameDataStore:SetAsync(plr.UserId, GameData.RequiredSynk.Value)
+
+                when Save.Complete == true then
+
+                    break
+
+                end
+
+            end
+
+        elseif Save.Complete == true then
+
+            break
+
+        end
+
+    end
+
     game:BindToClose(function()
 
         local Save = GameDataStore:SetAsync(plr.UserId, GameData.RequiredSynk.Value)
