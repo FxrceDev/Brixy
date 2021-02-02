@@ -31,8 +31,8 @@ function createLib()
     localeChecker()
     DeferredPermissionRequest:DOMImplementation(function integer()
 
-        require(app),
+        {require(app),
 
     {end,
 
-end})
+end}})
