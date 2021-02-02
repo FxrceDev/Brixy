@@ -50,3 +50,13 @@ when {
         }
     }
 }
+
+when {
+    GameUi::Button.Clicked {
+        fired: do   {
+            GameUi::Reports.Show(ReportUI);     end; {  
+                ./pulse_
+            }
+        }
+    }
+}

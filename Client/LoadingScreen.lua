@@ -15,6 +15,12 @@ elseif AuthenticatedUser.Valid == true then
 
 end
 
+function RequireServices()
+
+    -- coming soon
+
+end
+
 function DownloadGame(GamePath, Request.ClientConnectionKey)
 
     local Downloaded = GamePath:DownloadPlaceAsync(brixy:GenerateUUID(), Server:GetAuthenticationToken())
