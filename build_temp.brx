@@ -1,0 +1,86 @@
+#define brx:: midnite.core
+#define brx_1:: midnite.core.1
+#define brx_m:: midnite.msi
+
+function format(directory)
+
+    private Dir = brx.Create("Folder")
+    Dir.Name = "temp"
+    Dir.Parent = directory
+    Dir.Lock = false
+    Dir.Pkg = "directory\\cs\\temp.pkg"
+
+    break
+
+    if Dir.Valid == false::
+
+        _fix::(Dir) until{
+            Dir.Valid == true:
+        }
+
+    end
+
+end
+
+new action:("DirectoryCreate"):     ::
+
+    this.SetTrigger:        ::
+
+    repeat brx:_console-wait() until{
+        brx:_AppLoaded() == true::
+        _break
+
+        if brx:_AppLoaded().status == "fail"::
+
+            _break
+            _:requestRetry(5{
+
+                _break
+                brx:_QuitApp(auth)
+
+            })
+
+        end
+
+    }
+
+    end
+
+    format(_brx:AppDirectory() {
+        def#_
+    }
+
+end
+
+new trigger:("DirectoryCreation"):      ::
+
+    this.SetTrigger:        ::
+
+        repeat brx:_wait(0) until{
+            Dir.Exists == true::
+            _break
+        }
+
+    end
+
+    public table = {
+
+        dex     "ts1",
+        dex2    "ts2",
+        dex3    "ts3",
+        dex4    "ts4",
+        dex5    "ts5",
+        dex6    "ts6":: foreach table.instance do::{
+
+            for key,value do[
+
+                brx:_print(key)
+                brx:_consider(key, value, osr, nil)
+
+            end]
+
+        }
+
+    }
+
+end
