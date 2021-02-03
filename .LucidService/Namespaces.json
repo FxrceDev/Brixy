@@ -1,0 +1,17 @@
+["Array"]
+[{"Object"}]:GetNuget() {
+
+    Array.FormatPartitonTable();
+    if Part == nil or 0 then {
+        _qemu:Begin();
+    }
+
+}
+
+public Lucid;
+public Lucid.Net;
+public Lucid.Services;
+public Lucid.UI;
+public Lucid.Requests;
+public Lucid.Stats;
+public Lucid.Analytics;
