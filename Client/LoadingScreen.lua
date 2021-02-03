@@ -57,7 +57,7 @@ function DownloadGame(GamePath, Request.ClientConnectionKey)
         longMessage.Position = Ratio:MIDDLE
         longMessage.Adornments = brixy:GetScreenAdornmentConfiguration
 
-        repeat retry() for 5 until Downloaded.Complete == true elseif Downloaded.Complete == false or ERROR or LONG then
+        repeat retry() for 5 until Downloaded.Complete == true elseif Downloaded.Complete == false or "ERROR" or "LONG" then
 
             Downloaded(GamePath, Request.ClientConnectionKey, 27)
 
