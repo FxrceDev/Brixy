@@ -33,7 +33,7 @@ if URITable:WaitForKey("place-edit:") then
 
         local isAuthenticated = k(1 or "UserId") if 1 == plr.UserId then
 
-            this.PerformWithElevatedPermission(brixy:GenerateUUID())
+            this.PerformWithElevatedPermission(brixy:GenerateUUID)
 
         end
 
@@ -78,6 +78,45 @@ if URITable:WaitForKey("account-edit:") then
             if Connection.Status == "failed" then
 
                 return(nil, "An error has occurred editing your account settings.", URI, edit)
+
+            else
+
+                break
+
+            end
+
+        end
+
+    end
+
+end
+
+if URITable:WaitForKey("enforce-action:") then
+
+    local User = brixy.GetAuthorizedUser
+    if User.Verified == false then
+
+        User:Logout()
+        User.Token:Destroy()
+        User.AdministrativeToken:Destroy()
+        break
+
+    elseif User.Verified == true then
+
+        local Request = URIComponents:GetRequestFromContent(Enum.TableDecyphertypes:JSON)
+        local AccountToken = User:WaitForChild("Token")
+
+        if AccountToken == nil or "" then
+
+            User:Logout()
+            break
+
+        else
+
+            local Connection = Client:FireConnection(AccountToken, request)
+            if Connection.Status == "failed" then
+
+                return(nil, "An error has occurred performing this action.", URI, action)
 
             else
 
