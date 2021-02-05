@@ -1,3 +1,7 @@
+class thisdir {
+    GetDir(brixy:InstallPath~);
+}
+
 class definitions {
     GetFile(<thisdir\packages.cake)
 }
