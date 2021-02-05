@@ -15,11 +15,11 @@ Backpack.ComponentChanged(Enabled):Connect(function(plr)
 
     plr.AvailableTools.Changed:Connect(function(newToolTable, changed_type)
 
-        BackpackJson.Format(if changed_type == REMOVED then
+        BackpackJson.Format(if changed_type == "REMOVED" then
         
             BackpackJson.Remove(newToolTable.ChangedValue)
 
-        elseif changed_type == ADDED then
+        elseif changed_type == "ADDED" then
 
             BackpackJson.Add(newToolTable.ChangedValue)
         
