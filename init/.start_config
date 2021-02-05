@@ -1,0 +1,27 @@
+[ "START POINTERS" ]
+
+    ;FLAGS: {system_start_flags},
+    ;APP_FLAGS: {app_start_flags},
+    ;TIME_ZONE: {system_time_zone},
+    ;CURRENT_TIME: {time:TIME_ZONE},
+    ;ANTICHEAT: {enable},
+    ;ANTICHEAT_STATUS: {ANTICHEAT.status},
+    ;PLASMA_START: {PLASMA_BEGIN_PROC},
+    ;PLASMA_STAT: {PLASMA_START.STATUS},
+    ;REQUIRE: {none},
+    ;FOR: {"1.12.2"},
+    ;VER: {system_installed_version},
+    ;BVER: {brixy_installed_version}
+
+    :break_
+
+[ "APP CONFIGURATION" ]
+
+    ;FILES: {lua:(script.Parent.Parent:GetChildren())},
+    ;ADMIN: {lua:(brixy:AuthenticatedUser).Role)},
+    ;TOKEN: {lua:(brixy:AuthenticatedUser).Token:Decode},
+    ;AVATAR: {lua:(brixy:GetAvatarFromUserIdAsync(TOKEN:Search(return="UserId")))},
+    ;BANNED: {lua:(brixy:GetPunishmentFromUserIdAsync(TOKEN:Search(return="UserId", return="PunishmentLevel")))},
+    ;AGE: {lua:(brixy:GetUserAgeAsync(TOKEN:Search(return="UserId", return="UserAge")))}
+    
+    :break_
