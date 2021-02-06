@@ -2,7 +2,6 @@
     "version": "4.83.727_1",
     "configurations": [
         {
-            "os": "windows",
             "os_ver": "10",
             "request": "launch",
             "name": "Launch Brixy",
