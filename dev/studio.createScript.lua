@@ -15,9 +15,9 @@ scriptButton.Clicked:Connect(function()
         ls.Execute = false
 
         repeat wait() until {
-            ls.Exists == true or ls.Exists == "valid" then
+            ls.Exists == true or ls.Exists == "valid" then {
                 break:
-            end
+            end}}
 
         elseif expects.Met == false or "" then {
             break:
@@ -26,7 +26,30 @@ scriptButton.Clicked:Connect(function()
 
         }
 
-    elseif scriptButton.Intents == "Server"m then
+    elseif scriptButton.Intents == "Virtual" then
+
+        local vs = instance.new("VirtualScript")
+        vs.Name = "VirtualScript"
+        vs.Body = ""
+        vs.Creator = "Brixy Studio 2021"
+        vs.Permissions = brixy.Permissions:GET("VirtualScriptPermissions")
+        vs.Write = true
+        vs.Read = true
+        vs.Execute = false
+
+        repeat wait() until {
+            vs.Exists == true or vs.Exists == "valid" then {
+                break:
+            end}}
+
+        elseif expects.Met == false or "" then {
+                break:
+                brixy.ShowError("ScriptCreationError", false)
+        }
+
+        }
+
+    elseif scriptButton.Intents == "Server" then
 
         local ss = instance.new("ServerScript")
         ss.Name = "Script"
@@ -40,7 +63,7 @@ scriptButton.Clicked:Connect(function()
         repeat wait() until {
             ss.Exists == true or ss.Exists == "valid" then {
                 break:
-            end
+            end}}
 
         elseif expects.Met == false or "" then {
             break:
