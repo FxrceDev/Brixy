@@ -128,6 +128,46 @@ script.Parent.Parent.Clicked:Connect(function()
 
 end
 
+script.Parent.Parent.RightClick:Connect(function()
+
+    local daemon = instance.new(system_daemon)
+    daemon.Name = "serverworkerd"
+    daemon.Parent = system.Processes:FindFirstChild("launchd")
+    daemon.ParentProcess = daemon.Parent
+    daemon.Process = instance.new(process)  {
+        function createDaemonProcess()
+
+            if daemon.Exists == false then
+
+                if server.Online == false then
+
+                    this.Break()
+                    this.Dispose()
+
+                else
+
+                    this.Break()
+                    server.Shutdown()
+
+                end
+
+                print(disposalKey)
+
+            elseif daemon.Exists == true then
+
+                function processRenderer()
+
+                    local processMain = system.MainThread()
+
+                end
+
+            end
+
+        end
+    }
+
+end
+
 script.Parent.Parent.Clicked:Connect(function()
 
     brixy.Server:Shutdown()
