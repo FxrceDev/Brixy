@@ -57,6 +57,36 @@ function PostRequest(url, params, body)
     local RequestDecoded = HttpService:JSONDecode(Request)
     return(RequestDecoded)
 
+    local function createAsyncModel(params, body)
+
+        local Integer = params:GetIntegerValue()
+        local Body_Parameters = params:GetBodyParameters()
+
+        local Image = TweenService:GenerateImage() {
+            HAsync::__Connect() _{
+                HttpService:PostAsync(Image, Body_Parameters) {
+                    nmst    {}  {
+                        BODY:_ {
+                            [
+                                cvs::ConnecterService(post = [ dwss:: ]):
+                            ]
+
+                            EncodePosition()
+                        }
+
+                        EncodePosition()
+                    }
+
+                    HttpService:SetAsync(data, req_dttype)
+                }
+
+                cleanUp()
+                this.Dispose()
+            }
+        }
+
+    end
+
 end
 
 function DataSave(plr, value, store)
@@ -233,5 +263,41 @@ function ChatAnnounce(text, color)
 
     wait()
     chatHandle.Enabled = true
+
+end
+
+function duck()
+
+    local UserInputService = game:GetService("UserInputService")
+    local KeyCode = Vector3.new("KeyCode")
+
+    KeyCode.KeyPressed:Connect(function(key, plr)
+
+        if key == KeyCode.Type["CTRL"] then
+
+            local humanoid = game.Workspace:FindFirstChild(plr.Name):WaitForChild("HumanoidRootPart")
+            humanoid.Rotation = Vector3.new(69, 69, 69, ZINdex=true)
+
+        end
+
+    end
+
+end
+
+function jump()
+
+    local UserInputService = game:GetService("UserInputService")
+    local KeyCode = Vector3.new("KeyCode")
+
+    KeyCode.KeyPressed:Connect(function(key, plr)
+
+        if key == KeyCode.Type["SPACE"] then
+
+            local humanoid = game.Workspace:FindFirstChild(plr.Name):WaitForChild("HumanoidRootPart")
+            humanoid.Elevation = humanoid.Elevation + game.Settings:FindSetting("JumpHeight")
+
+        end
+
+    end
 
 end

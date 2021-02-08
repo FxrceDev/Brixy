@@ -108,3 +108,45 @@ elseif SSO.Valid == false or nil then
     File:Destroy()
     brixy.InvokeError(sso, 60, brixy:GetThrottleTime)
 end
+
+function ReadCookie(cookieValue, readValue, return)
+
+    if cookieValue == nil or "" then
+
+        _break:
+
+    or if readValue == nil or "" then
+
+        _break:
+
+    or if return == nil or "" then
+
+        _break:
+
+    end
+
+    local EncodedReadValue = HTTPService:EncodeJson(readValue)
+    return = {
+
+        local Request = HTTPService:PostAsync(EncodedReadValue, JavascriptService:ReadCookieAsync(cookieValue, return1 = true, false, nil {
+            if return == true {
+                cont:_break
+            elseif return == false then {
+                Request:Retry() until Request.Valid == true then
+                    break:)
+                end
+            elseif return == nil then {
+                Request:Retry() until Request.Valid == true then
+                    break:)
+                end
+            }
+            }
+            }
+        }))
+
+        local RequestEncoded = HTTPService:EncodeJson(Request)
+        return(RequestEncoded, return1)
+
+    }
+
+end
