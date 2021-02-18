@@ -1,0 +1,25 @@
+{
+    "name": "evg",
+    "displayName": "Everglow",
+    "description": "Everglow Language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "everglow",
+            "aliases": ["Everglow", "everglow"],
+            "extensions": [".evg",".everglow",".glow",".oevg"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "everglow",
+            "scopeName": "source.everglow",
+            "path": "./syntaxes/everglow.tmLanguage.json"
+        }]
+    }
+}

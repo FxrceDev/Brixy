@@ -1,0 +1,35 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Everglow",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.everglow",
+				"match": "\\b(if|while|for|return|this|float|function|func|zindex|Vector)\\b",
+
+				"opeerator": "keyword.operator",
+				"for": "\\b(or|else|pairs|null)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.everglow",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.everglow",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.everglow"
+}
