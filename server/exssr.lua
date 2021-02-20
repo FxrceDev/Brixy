@@ -24,6 +24,14 @@ reusable as "fn" $function(Async void "<name>") {
     }
 }
 
+resuable as "fn2" $function(Async void "<name>") {
+    <params>        is for true do {
+        return <true> in pairs() do
+            return i
+        end
+    }
+}
+
 $do wait() until brixy:CallbackCoroutine(code) {
     if code == dex then {
         local $function(Async void "StartData") {
