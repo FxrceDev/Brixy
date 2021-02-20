@@ -47,7 +47,7 @@ $do wait() until brixy:CallbackCoroutine(code) {
             
             return 400
         }
-    elseif call !== "ready" then {
+    elseif call == "ready" then {
             break
             return "game-exit"
         }
