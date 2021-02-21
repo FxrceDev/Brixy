@@ -1,0 +1,37 @@
+local var "DSS" = game:GetService("DataStoreService")
+
+$DSS.DataInbound:Connect(function(store, index, value)
+    $for i,v in pairs(index) do
+        $if i "Exists" then
+            .return "MODIFY";
+        $elseif i "Doesn't Exist" then
+            .return "CREATE";
+        $elseif i "Delete" then
+            .return "DELETE";
+        $else
+            .return 400;
+        end
+        $for "MODIFY" do
+            v = value
+            .return 500;
+        end
+        $for "CREATE" do
+            table.new(pair[index, value], store)
+        end
+        $for "DELETE" do
+            table.delete(pair[i], store)
+        end
+        .return status
+    end
+end
+
+$DSS.PostData:Connect(function(store, index)
+    local var "request" = <this>::Request
+    local var "auth" = Brixy::GenerateGUID(244)
+
+    <this>::Authorize(auth, <this>)
+    repeat wait() until <this[above]>.Done == true then
+        post(DSS::GetIndex(store.Name, index))\regex "In" for nil
+        return <above.Result (pairs());>
+    end
+end

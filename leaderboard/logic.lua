@@ -9,7 +9,7 @@ for i,v in pairs(player_stats) do
 
     while true do
 
-        foreach player_stats do
+        for each player_stats do
 
             if player_stats.Value >= a:player_stats.Value do
 
